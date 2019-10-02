@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Tamagotchi1"
+        android:id="@+id/tama1"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:background="@android:color/holo_green_dark"
+        app:layout_constraintBottom_toTopOf="@id/tama2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tamagotchi1"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text1"
+            android:text="Food Left: "
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Tamagotchi2"
+        android:id="@+id/tama2"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:background="@android:color/holo_green_dark"
+        app:layout_constraintBottom_toTopOf="@id/tama3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tama1" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tamagotchi1"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text2"
+            android:text="Food Left: "
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Tamagotchi3"
+        android:id="@+id/tama3"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:background="@android:color/holo_green_dark"
+        app:layout_constraintBottom_toTopOf="@id/tama4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tama2" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tamagotchi1"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text3"
+            android:text="Food Left: "
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Tamagotchi4"
+        android:id="@+id/tama4"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:background="@android:color/holo_green_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tama3" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tamagotchi1"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text4"
+            android:text="Food Left: "
+            android:textSize="20dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
