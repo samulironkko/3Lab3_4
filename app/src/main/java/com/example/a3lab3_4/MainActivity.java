@@ -1,7 +1,10 @@
 package com.example.a3lab3_4;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,17 +14,23 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Tamagotchi.MyInterface {
 
-    LinearLayout layout1;
-    LinearLayout layout2;
-    LinearLayout layout3;
-    LinearLayout layout4;
 
     TextView textView1;
     TextView textView2;
     TextView textView3;
     TextView textView4;
 
+    LinearLayout layout1;
+    LinearLayout layout2;
+    LinearLayout layout3;
+    LinearLayout layout4;
+
+    int counter = 0;
+
+
     ArrayList<Tamagotchi> tamagotchis;
+    ArrayList<TextView> textViews;
+    ArrayList<LinearLayout> layouts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +42,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layout3 = findViewById(R.id.tama3);
         layout4 = findViewById(R.id.tama4);
 
+        layouts = new ArrayList<>();
+
+        layouts.add(layout1);
+        layouts.add(layout2);
+        layouts.add(layout3);
+        layouts.add(layout4);
+
         textView1 = findViewById(R.id.text1);
         textView2 = findViewById(R.id.text2);
         textView3 = findViewById(R.id.text3);
         textView4 = findViewById(R.id.text4);
 
+        textViews = new ArrayList<>();
 
+        textViews.add(textView1);
+        textViews.add(textView2);
+        textViews.add(textView3);
+        textViews.add(textView4);
 
         createFarm();
     }
@@ -68,25 +89,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void updateStatus(int foodLeft, int id) {
+    public void updateStatus(final int foodLeft, final int id) {
 
-        switch (id) {
-            case 0:
-                textView1.setText("Food Left: " + foodLeft);
-                break;
+        MainActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
 
-            case 1:
-                textView2.setText("Food Left: " + foodLeft);
-                break;
+                if (foodLeft < 1 ||  foodLeft > 20) {
+                    layouts.get(id).setBackgroundColor(Color.parseColor("red"));
+                    counter--;
+                }
 
-            case 2:
-                textView3.setText("Food Left: " + foodLeft);
-                break;
+                textViews.get(id).setText("Food Left: " + foodLeft);
 
-            case 3:
-                textView4.setText("Food Left: " + foodLeft);
-                break;
-        }
+                if (counter == 0) {
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("Game Over")
+                            .setPositiveButton(android.R.string.yes, null)
+                            .show();
+                }
+
+            }
+        });
 
     }
 
@@ -105,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         for (Tamagotchi tamagotchi : tamagotchis) {
             tamagotchi.start();
+            counter++;
         }
 
     }

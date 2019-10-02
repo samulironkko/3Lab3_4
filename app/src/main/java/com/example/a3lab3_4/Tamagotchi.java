@@ -2,7 +2,7 @@ package com.example.a3lab3_4;
 
 public class Tamagotchi extends Thread {
   private int foodLeft = 10;
-  private int id;
+  private final int id;
 
   public void setFood() {
     foodLeft = foodLeft + 10;
