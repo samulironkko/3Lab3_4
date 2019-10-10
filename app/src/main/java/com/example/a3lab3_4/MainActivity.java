@@ -25,10 +25,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout layout3;
     LinearLayout layout4;
 
+    Tamagotchi[] tamagotchis;
+    int numberOfTamagotchis = 4;
+
     int counter = 0;
 
-
-    ArrayList<Tamagotchi> tamagotchis;
     ArrayList<TextView> textViews;
     ArrayList<LinearLayout> layouts;
 
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tamagotchis = new Tamagotchi[numberOfTamagotchis];
 
         layout1 = findViewById(R.id.tama1);
         layout2 = findViewById(R.id.tama2);
@@ -70,19 +73,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.tama1:
-                tamagotchis.get(0).setFood();
+                tamagotchis[0].setFood();
                 break;
 
             case R.id.tama2:
-                tamagotchis.get(1).setFood();
+                tamagotchis[1].setFood();
                 break;
 
             case R.id.tama3:
-                tamagotchis.get(2).setFood();
+                tamagotchis[2].setFood();
                 break;
 
             case R.id.tama4:
-                tamagotchis.get(3).setFood();
+                tamagotchis[3].setFood();
                 break;
         }
 
@@ -116,21 +119,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void createFarm() {
 
-        tamagotchis = new ArrayList<Tamagotchi>();
-        Tamagotchi tamagotchi1 = new Tamagotchi(this, 0);
-        Tamagotchi tamagotchi2 = new Tamagotchi(this, 1);
-        Tamagotchi tamagotchi3 = new Tamagotchi(this, 2);
-        Tamagotchi tamagotchi4 = new Tamagotchi(this, 3);
-
-        tamagotchis.add(tamagotchi1);
-        tamagotchis.add(tamagotchi2);
-        tamagotchis.add(tamagotchi3);
-        tamagotchis.add(tamagotchi4);
-
-        for (Tamagotchi tamagotchi : tamagotchis) {
-            tamagotchi.start();
-            counter++;
+        for (int i = 0; i < numberOfTamagotchis; i++) {
+            tamagotchis[i] = new Tamagotchi(this, i);
+            tamagotchis[i].start();
         }
-
+        counter = numberOfTamagotchis;
     }
 }
